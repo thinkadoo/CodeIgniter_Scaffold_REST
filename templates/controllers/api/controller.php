@@ -38,13 +38,16 @@ class %NAME_CONTROLLER% extends REST_Controller {
     function post_post()
     {
 
-        $data = %FIELDS_ARRAY_CUSTOM_POST%
+        $data = array($this->request->body);
+
+        $cleandata = %FIELDS_ARRAY_CUSTOM_POST%
+
+        $id = $data[0]['id'];
+
+        $id = %MODEL_CALL%->update($id,$cleandata);
 
 
-        $id = %MODEL_CALL%->update($this->post('id'),$data);
-
-
-        $return = %MODEL_CALL%->get_by_id($this->post('id'))->row();
+        $return = %MODEL_CALL%->get_by_id($id)->row();
 
 
         if($return)

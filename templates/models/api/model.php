@@ -52,7 +52,6 @@ class %NAME_MODEL% extends CI_Model
         return $id;
     }
 
-
     public function delete($id)
     {
         $this->db->where('id', $id);
