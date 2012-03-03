@@ -12,10 +12,12 @@ class %NAME_CONTROLLER% extends REST_Controller {
 
 // http://localhost/base_path/index.php/api/%NAME_CONTROLLER_LOWER%/put/format/json
 
-    function put_put()
+    function post_post()
     {
+        $postdata = (array)$this->request->body;
 
-        $data = %FIELDS_ARRAY_CUSTOM_PUT%
+        $data = %FIELDS_ARRAY_CUSTOM_POST%
+
 
         $id = %MODEL_CALL%->save($data);
 
@@ -35,16 +37,12 @@ class %NAME_CONTROLLER% extends REST_Controller {
 
 // http://localhost/base_path/index.php/api/%NAME_CONTROLLER_LOWER%/post/format/json
 
-    function post_post()
+    function put_put()
     {
+        $data = %FIELDS_ARRAY_CUSTOM_PUT%
 
-        $data = array($this->request->body);
 
-        $cleandata = %FIELDS_ARRAY_CUSTOM_POST%
-
-        $id = $data[0]['id'];
-
-        $id = %MODEL_CALL%->update($id,$cleandata);
+        $id = %MODEL_CALL%->update($this->put('id'),$data);
 
 
         $return = %MODEL_CALL%->get_by_id($id)->row();
@@ -56,7 +54,7 @@ class %NAME_CONTROLLER% extends REST_Controller {
         }
         else
         {
-            $this->response(array('error' => 'Entity could not be created'), 404);
+            $this->response(array('error' => 'Entity could not be updated'), 404);
         }
     }
 
@@ -79,7 +77,7 @@ class %NAME_CONTROLLER% extends REST_Controller {
         }
         else
         {
-            $this->response(array('error' => 'Entity could not be created'), 404);
+            $this->response(array('error' => 'Entity could not be deleted'), 404);
         }
     }
 

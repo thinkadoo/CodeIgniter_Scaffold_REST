@@ -175,7 +175,7 @@ class model_iscaffold extends CI_Model
             }
             // SKIP 'Virtual fields'
             //$raw_fields_string .= ( $this->table_config[$key]['sf_type'] == 'many_related' ) ? '' : $separator . $field;
-            $fields_array_custom_post      .= $separator . "\n\t'" . $field . "' => \$data[0]['" . $field . "']";
+            $fields_array_custom_post      .= $separator . "\n\t'" . $field . "' => \$postdata['" . $field . "']";
 
         }
 
