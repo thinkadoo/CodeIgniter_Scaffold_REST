@@ -102,7 +102,7 @@ function findById(id) {
 	});
 }
 
-function updateWine() {
+function addWine() {
 	console.log('addWine');
 	$.ajax({
 		type: 'PUT',
@@ -121,7 +121,7 @@ function updateWine() {
 	});
 }
 
-function addWine() {
+function updateWine() {
 	console.log('updateWine');
 	$.ajax({
 		type: 'POST',

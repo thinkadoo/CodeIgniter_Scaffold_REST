@@ -12,22 +12,19 @@ class Wine extends REST_Controller {
 
 // http://localhost/base_path/index.php/api/wine/put/format/json
 
-    function post_post()
+    function put_put()
     {
 
-        $postdata = (array)$this->request->body;
-
         $data = array(
-            'id' => $postdata['id'],
-            'name' => $postdata['name'],
-            'year' => $postdata['year'],
-            'grapes' => $postdata['grapes'],
-            'country' => $postdata['country'],
-            'region' => $postdata['region'],
-            'description' => $postdata['description'],
-            'picture' => $postdata['picture']
-        );
-
+	'id' => $this->put('id'),
+	'name' => $this->put('name'),
+	'year' => $this->put('year'),
+	'grapes' => $this->put('grapes'),
+	'country' => $this->put('country'),
+	'region' => $this->put('region'),
+	'description' => $this->put('description'),
+	'picture' => $this->put('picture')
+);
 
         $id = $this->model_wine->save($data);
 
@@ -47,22 +44,25 @@ class Wine extends REST_Controller {
 
 // http://localhost/base_path/index.php/api/wine/post/format/json
 
-    function put_put()
+    function post_post()
     {
 
-        $data = array(
-            'id' => $this->put('id'),
-            'name' => $this->put('name'),
-            'year' => $this->put('year'),
-            'grapes' => $this->put('grapes'),
-            'country' => $this->put('country'),
-            'region' => $this->put('region'),
-            'description' => $this->put('description'),
-            'picture' => $this->put('picture')
-        );
+        $data = array($this->request->body);
 
+        $cleandata = array(
+	'id' => $data[0]['id'],
+	'name' => $data[0]['name'],
+	'year' => $data[0]['year'],
+	'grapes' => $data[0]['grapes'],
+	'country' => $data[0]['country'],
+	'region' => $data[0]['region'],
+	'description' => $data[0]['description'],
+	'picture' => $data[0]['picture']
+);
 
-        $id = $this->model_wine->update($this->put('id'),$data);
+        $id = $data[0]['id'];
+
+        $id = $this->model_wine->update($id,$cleandata);
 
 
         $return = $this->model_wine->get_by_id($id)->row();
@@ -74,7 +74,7 @@ class Wine extends REST_Controller {
         }
         else
         {
-            $this->response(array('error' => 'Entity could not be updated'), 404);
+            $this->response(array('error' => 'Entity could not be created'), 404);
         }
     }
 
@@ -97,7 +97,7 @@ class Wine extends REST_Controller {
         }
         else
         {
-            $this->response(array('error' => 'Entity could not be deleted'), 404);
+            $this->response(array('error' => 'Entity could not be created'), 404);
         }
     }
 
