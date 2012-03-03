@@ -14,19 +14,18 @@ class Wine extends REST_Controller {
 
     function post_post()
     {
-
         $postdata = (array)$this->request->body;
 
-        $data = array(
-            'id' => $postdata['id'],
-            'name' => $postdata['name'],
-            'year' => $postdata['year'],
-            'grapes' => $postdata['grapes'],
-            'country' => $postdata['country'],
-            'region' => $postdata['region'],
-            'description' => $postdata['description'],
-            'picture' => $postdata['picture']
-        );
+        @$data = array(
+	'id' => $postdata['id'],
+	'name' => $postdata['name'],
+	'year' => $postdata['year'],
+	'grapes' => $postdata['grapes'],
+	'country' => $postdata['country'],
+	'region' => $postdata['region'],
+	'description' => $postdata['description'],
+	'picture' => $postdata['picture']
+);
 
 
         $id = $this->model_wine->save($data);
@@ -49,17 +48,16 @@ class Wine extends REST_Controller {
 
     function put_put()
     {
-
         $data = array(
-            'id' => $this->put('id'),
-            'name' => $this->put('name'),
-            'year' => $this->put('year'),
-            'grapes' => $this->put('grapes'),
-            'country' => $this->put('country'),
-            'region' => $this->put('region'),
-            'description' => $this->put('description'),
-            'picture' => $this->put('picture')
-        );
+	'id' => $this->put('id'),
+	'name' => $this->put('name'),
+	'year' => $this->put('year'),
+	'grapes' => $this->put('grapes'),
+	'country' => $this->put('country'),
+	'region' => $this->put('region'),
+	'description' => $this->put('description'),
+	'picture' => $this->put('picture')
+);
 
 
         $id = $this->model_wine->update($this->put('id'),$data);

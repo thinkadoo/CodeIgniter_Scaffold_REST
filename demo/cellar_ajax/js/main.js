@@ -110,14 +110,12 @@ function updateWine() {
 		url: rootURL + '/put/format/json',
 		dataType: "json",
 		data: formToJSON(),
-		success: function(data, textStatus, jqXHR){
-			alert('Wine created successfully');
-			$('#btnDelete').show();
-			$('#wineId').val(data.id);
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert('addWine error: ' + textStatus);
-		}
+        success: function(data, textStatus, jqXHR){
+            alert('Wine updated successfully');
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            alert('updateWine error: ' + textStatus);
+        }
 	});
 }
 
@@ -129,12 +127,14 @@ function addWine() {
 		url: rootURL + '/post/format/json',
 		dataType: "json",
 		data: formToJSON(),
-		success: function(data, textStatus, jqXHR){
-			alert('Wine updated successfully');
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert('updateWine error: ' + textStatus);
-		}
+        success: function(data, textStatus, jqXHR){
+            alert('Wine created successfully');
+            $('#btnDelete').show();
+            $('#wineId').val(data.id);
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            alert('addWine error: ' + textStatus);
+        }
 	});
 }
 
