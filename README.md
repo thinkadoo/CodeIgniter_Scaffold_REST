@@ -9,6 +9,19 @@ With some exaggeration the process is this simple:
 * Click generate
 * Take the application
 
+# See the result?
+Here are some screen shots of them outcome:
+
+http://cl.ly/EhRf
+
+http://cl.ly/EgXs
+
+http://cl.ly/EgqY
+
+http://cl.ly/EgYk
+
+http://cl.ly/EfsV
+
 # User guide
 Start exploring iScaffold in details on the [GitHub wiki pages](https://github.com/kowdermeister/iScaffold/wiki).
 See REST Server here https://github.com/philsturgeon/codeigniter-restserver.
